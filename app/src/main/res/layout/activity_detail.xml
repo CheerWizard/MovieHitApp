@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/content"
+        android:id="@+id/thumbnail_image_header"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:textColor="@color/colorAccent"
+        android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_below="@id/thumbnail_image_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:id="@+id/title"
+                android:padding="@dimen/padding_layout"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="@dimen/layout_margin_top"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:text="@string/description"
+                android:layout_weight="1"
+                android:id="@+id/plotsynopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:padding="@dimen/padding_layout"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:text="@string/rated_to"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userrating"
+                android:textColor="@color/colorAccent"
+                android:padding="@dimen/padding_layout"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:text="@string/release_date"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/releasedate"
+                android:textColor="@color/colorAccent"
+                android:padding="@dimen/padding_layout"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

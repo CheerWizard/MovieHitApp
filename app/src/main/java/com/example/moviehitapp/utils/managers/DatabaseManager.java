@@ -10,7 +10,11 @@ public final class DatabaseManager {
     private static RoomDatabase roomDataBase;
 
     public static synchronized void open(Context context , Class<? extends RoomDatabase> roomDatabaseClass , String db_name) {
-        roomDataBase = Room.databaseBuilder(context , roomDatabaseClass , db_name).build();
+        roomDataBase = Room
+                .databaseBuilder(context , roomDatabaseClass , db_name)
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
     }
 
     public static synchronized void close() {

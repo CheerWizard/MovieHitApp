@@ -1,7 +1,7 @@
 package com.example.moviehitapp.network.webservices;
 
 import com.example.moviehitapp.annotations.WebService;
-import com.example.moviehitapp.model.MoviesResponse;
+import com.example.moviehitapp.business_logic.data.MoviesResponse;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;

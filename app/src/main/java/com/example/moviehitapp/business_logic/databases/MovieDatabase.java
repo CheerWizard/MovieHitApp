@@ -1,19 +1,19 @@
 package com.example.moviehitapp.business_logic.databases;
 
-import com.example.moviehitapp.utils.converters.GenreIdsConverter;
 import com.example.moviehitapp.business_logic.dao.MovieDao;
+import com.example.moviehitapp.business_logic.dao.MovieResponseDao;
 import com.example.moviehitapp.business_logic.data.Movie;
+import com.example.moviehitapp.business_logic.data.MoviesResponse;
 
 import javax.inject.Singleton;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 
 @Singleton
-@Database(entities = {Movie.class} ,
+@Database(entities = {Movie.class , MoviesResponse.class} ,
         version = 1 , exportSchema = false)
-@TypeConverters({GenreIdsConverter.class})
 public abstract class MovieDatabase extends RoomDatabase {
     public abstract MovieDao movieDao();
+    public abstract MovieResponseDao movieResponseDao();
 }

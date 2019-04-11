@@ -10,10 +10,8 @@ import dagger.android.ContributesAndroidInjector;
 @Singleton
 @Module
 public abstract class ActivityBindingModule {
-
     @ContributesAndroidInjector
     abstract MainActivity bindMainActivity();
-
     @ContributesAndroidInjector
     abstract DetailActivity bindDetailActivity();
 }

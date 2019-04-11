@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.example.moviehitapp.annotations.Model;
+import com.example.moviehitapp.utils.converters.GenreIdsConverter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 /**
  * Created by jeremy on 07/04/19.
@@ -34,6 +36,7 @@ public class Movie implements Parcelable {
     @SerializedName("release_date")
     private String releaseDate;
     @SerializedName("genre_ids")
+    @TypeConverters({GenreIdsConverter.class})
     private List<Integer> genreIds = new ArrayList<>();
     @SerializedName("original_title")
     private String originalTitle;

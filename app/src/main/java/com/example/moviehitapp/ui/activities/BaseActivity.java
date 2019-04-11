@@ -2,14 +2,14 @@ package com.example.moviehitapp.ui.activities;
 
 import android.os.Bundle;
 
-import com.example.moviehitapp.annotations.View;
+import com.example.moviehitapp.annotations.Ui;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import butterknife.ButterKnife;
 import dagger.android.support.DaggerAppCompatActivity;
 
-@View
+@Ui
 public abstract class BaseActivity extends DaggerAppCompatActivity {
 
     @LayoutRes

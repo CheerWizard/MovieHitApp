@@ -3,6 +3,7 @@ package com.example.moviehitapp.dependency_injection.modules;
 import android.util.Log;
 
 import com.example.moviehitapp.business_logic.dao.MovieDao;
+import com.example.moviehitapp.business_logic.dao.MovieResponseDao;
 import com.example.moviehitapp.business_logic.databases.MovieDatabase;
 
 import javax.inject.Singleton;
@@ -19,5 +20,11 @@ public class DaoModule {
     static MovieDao provideMovieDao(@NonNull MovieDatabase movieDatabase) {
         Log.d("dao module" , "started");
         return movieDatabase.movieDao();
+    }
+    @Singleton
+    @Provides
+    static MovieResponseDao provideMovieResponseDao(@NonNull MovieDatabase movieDatabase) {
+        Log.d("dao module" , "started");
+        return movieDatabase.movieResponseDao();
     }
 }

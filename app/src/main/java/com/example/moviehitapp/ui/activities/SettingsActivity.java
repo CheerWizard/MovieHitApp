@@ -5,9 +5,9 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
 import com.example.moviehitapp.R;
-import com.example.moviehitapp.annotations.View;
+import com.example.moviehitapp.annotations.Ui;
 
-@View
+@Ui
 public class SettingsActivity extends PreferenceActivity {
 
     @Override

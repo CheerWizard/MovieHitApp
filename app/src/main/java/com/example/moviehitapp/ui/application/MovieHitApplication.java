@@ -1,17 +1,19 @@
 package com.example.moviehitapp.ui.application;
 
+import com.example.moviehitapp.annotations.Application;
+import com.example.moviehitapp.dependency_injection.components.DaggerApplicationComponent;
 import com.example.moviehitapp.utils.managers.DatabaseManager;
 import com.example.moviehitapp.dependency_injection.components.ApplicationComponent;
-import com.example.moviehitapp.dependency_injection.components.DaggerApplicationComponent;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
 
+@Application
 public class MovieHitApplication extends DaggerApplication {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        DatabaseManager.close();
+        if (DatabaseManager.isOpen()) DatabaseManager.close();
     }
     @Override
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {

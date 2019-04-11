@@ -7,19 +7,20 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.moviehitapp.R;
+import com.example.moviehitapp.annotations.Ui;
 import com.example.moviehitapp.business_logic.data.Movie;
 import com.example.moviehitapp.constants.ImageUrl;
 
 import java.util.Objects;
 
 import butterknife.BindView;
-
+@Ui
 public class DetailActivity extends BaseActivity {
-    @BindView(R.id.title) TextView nameOfMovie;
-    @BindView(R.id.plotsynopsis) TextView plotSynopsis;
-    @BindView(R.id.userrating) TextView userRating;
-    @BindView(R.id.releasedate) TextView releaseDate;
-    @BindView(R.id.thumbnail_image_header) ImageView imageView;
+    @BindView(R.id.title) TextView nameOfMovieTextView;
+    @BindView(R.id.plotsynopsis) TextView plotSynopsisTextView;
+    @BindView(R.id.userrating) TextView userRatingTextView;
+    @BindView(R.id.releasedate) TextView releaseDateTextView;
+    @BindView(R.id.thumbnail_image_header) ImageView thumbnailImageView;
 
     @Override
     protected int layoutRes() {
@@ -38,12 +39,12 @@ public class DetailActivity extends BaseActivity {
             Glide.with(this)
                     .load(poster)
                     .placeholder(R.drawable.load)
-                    .into(imageView);
+                    .into(thumbnailImageView);
             //update visual components
-            nameOfMovie.append("\n" + movie.getOriginalTitle());
-            plotSynopsis.append("\n" + movie.getOverview());
-            userRating.append(" " + String.valueOf(movie.getVoteAverage()));
-            releaseDate.append(" " + movie.getReleaseDate());
+            nameOfMovieTextView.append("\n" + movie.getOriginalTitle());
+            plotSynopsisTextView.append("\n" + movie.getOverview());
+            userRatingTextView.append(" " + String.valueOf(movie.getVoteAverage()));
+            releaseDateTextView.append(" " + movie.getReleaseDate());
         }
         else Toast.makeText(this, "No API Data", Toast.LENGTH_SHORT).show();
     }

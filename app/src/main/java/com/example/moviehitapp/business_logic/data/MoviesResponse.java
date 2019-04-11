@@ -1,9 +1,10 @@
-package com.example.moviehitapp.model;
+package com.example.moviehitapp.business_logic.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.moviehitapp.business_logic.data.Movie;
+import com.example.moviehitapp.annotations.Model;
+import com.example.moviehitapp.utils.converters.MoviesConverter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -11,16 +12,32 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+@Entity
+@Model
 public class MoviesResponse implements Parcelable {
+    @PrimaryKey(autoGenerate = true)
+    private int response_id;
     @SerializedName("page")
     private int page;
     @SerializedName("results")
+    @TypeConverters(value = {MoviesConverter.class})
     private List<Movie> results;
     @SerializedName("total_results")
     private int totalResults;
     @SerializedName("total_pages")
     private int totalPages;
+
+    public int getResponse_id() {
+        return response_id;
+    }
+
+    public void setResponse_id(int response_id) {
+        this.response_id = response_id;
+    }
 
     public int getPage() {
         return page;

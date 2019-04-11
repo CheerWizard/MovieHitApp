@@ -1,6 +1,7 @@
 package com.example.moviehitapp.business_logic.dao;
 
 import com.example.moviehitapp.business_logic.data.Movie;
+import com.example.moviehitapp.utils.converters.GenreIdsConverter;
 
 import java.util.List;
 
@@ -9,7 +10,9 @@ import javax.inject.Singleton;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.TypeConverters;
 import androidx.room.Update;
 
 @Dao
@@ -19,7 +22,7 @@ public interface MovieDao {
     Movie select(int id);
     @Query("SELECT * FROM movie")
     List<Movie> selectAll();
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Movie movie);
     @Update
     void update(Movie movie);

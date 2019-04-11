@@ -1,5 +1,7 @@
 package com.example.moviehitapp.utils.factories;
 
+import com.example.moviehitapp.annotations.Factory;
+
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+@Factory
 @Singleton
 public class ViewModelFactory implements ViewModelProvider.Factory {
 
@@ -32,9 +35,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
                     break;
                 }
             }
-        }
-        if (creator == null) {
-            throw new IllegalArgumentException("unknown model class " + modelClass);
+            if (creator == null) throw new IllegalArgumentException("unknown model class " + modelClass);
         }
         try {
             return (T) creator.get();

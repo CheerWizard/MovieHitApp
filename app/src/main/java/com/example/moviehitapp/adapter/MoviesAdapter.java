@@ -14,9 +14,7 @@ import com.example.moviehitapp.annotations.Adapter;
 import com.example.moviehitapp.constants.ImageUrl;
 import com.example.moviehitapp.R;
 import com.example.moviehitapp.business_logic.data.Movie;
-import com.example.moviehitapp.constants.SortOrder;
 import com.example.moviehitapp.ui.activities.DetailActivity;
-import com.example.moviehitapp.utils.MoviesSorter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +37,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     public void updateData(List<Movie> updatedMovieList) {
         movieList.clear();
         if (updatedMovieList != null) {
-            movieList.addAll(MoviesSorter.sort(updatedMovieList , SortOrder.BY_MOVIES_ORIGINAL_TITLE));
+            movieList.addAll(updatedMovieList);
             notifyDataSetChanged();
         }
     }
@@ -65,13 +63,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         //bindView annotation will automatically identify the particular views
-        @BindView(R.id.title) TextView title;
-        @BindView(R.id.userrating) TextView user_rating;
-        @BindView(R.id.thumbnail) ImageView thumbnail;
+        @BindView(R.id.title) TextView titleTextView;
+        @BindView(R.id.userrating) TextView user_ratingTextView;
+        @BindView(R.id.thumbnail) ImageView thumbnailImageView;
         //global var
         private Movie movie;
 
-        private MyViewHolder(View view){
+        private MyViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
             view.setOnClickListener((v) -> {if (movie != null) {
@@ -89,15 +87,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
         private void bind(@NonNull Movie movie) {
             this.movie = movie;
-            title.setText(movie.getOriginalTitle());
+            titleTextView.setText(movie.getOriginalTitle());
             final String vote = Double.toString(movie.getVoteAverage());
-            user_rating.setText(vote);
+            user_ratingTextView.setText(vote);
             final String poster_url = ImageUrl.w185 + movie.getPosterPath();
             //here we use Glide library for visualizing in gallery style
             Glide.with(context)
                     .load(poster_url)
                     .placeholder(R.drawable.load)
-                    .into(thumbnail);
+                    .into(thumbnailImageView);
         }
     }
 }
